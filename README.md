@@ -1,11 +1,11 @@
-From teh root directory:
+Prerequisites: 
+- Java 17
+- Docker desktop installed 
 
-```sh
-mvn -DskipTests clean install
-```
 
 From the `platform` directory: 
 
 ```sh
 docker compose up -d --build
 ```
+

@@ -2,7 +2,7 @@ server:
   port: 8081
 
 app:
-  greeting: "Hello from Config Server (prod)"
+  greeting: "Product service: Hello from Config Server (prod)"
 logging:
   level:
     root: INFO
