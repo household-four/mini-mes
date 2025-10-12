@@ -6,5 +6,5 @@ public enum PartType {
     ADHESIVE,
     ASSEMBLY,
     PURCHASED_PART,
-    MANFACTURED_PART
+    MANUFACTURED_PART
 }

@@ -1,24 +1,23 @@
 # ---------- build ----------
 FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /workspace
-COPY pom.xml .
-COPY src ./src
-RUN mvn -q -DskipTests package
+
+COPY pom.xml pom.xml
+COPY services/common-domain/pom.xml services/common-domain/pom.xml
+COPY services/config-server/pom.xml services/config-server/pom.xml
+COPY services/product-service/pom.xml services/product-service/pom.xml
+
+RUN mvn -q -DskipTests -pl services/config-server -am dependency:go-offline
+
+COPY . .
+RUN mvn -q -DskipTests -pl services/config-server -am package
 
 # ---------- runtime ----------
 FROM eclipse-temurin:17-jre-jammy
-ENV TZ=UTC \
-    SPRING_PROFILES_ACTIVE=native \
-    JAVA_OPTS=""
-
-RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/*
-
 WORKDIR /app
-VOLUME /tmp
-COPY --from=build /workspace/target/*.jar /app/app.jar
-# non-root
-RUN useradd -r -u 10001 spring
-USER 10001
-EXPOSE 8071
-ENTRYPOINT ["sh","-c","java $JAVA_OPTS -jar /app/app.jar"]
+
+COPY --from=build /workspace/services/config-server/target/config_server-0.0.1-SNAPSHOT.jar app.jar
+
+EXPOSE 8071 
+ENTRYPOINT ["java","-jar","/app/app.jar"]
     

@@ -5,6 +5,7 @@ import org.springframework.hateoas.RepresentationModel;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import barr.common_domain.WorkstationType;
 import jakarta.persistence.*;
 import java.util.UUID;
 
@@ -27,7 +28,7 @@ public class Operation extends RepresentationModel<Operation> {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "workstation_type", nullable = false, length = 64)
-    private WorkStationType workstationType;
+    private WorkstationType workstationType;
 
     @PrePersist
     void prePersist() {
