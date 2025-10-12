@@ -22,6 +22,6 @@ COPY --from=build /workspace/target/*.jar /app/app.jar
 RUN useradd -r -u 10001 spring
 USER 10001
 
-EXPOSE 8080
+EXPOSE 8081
 ENTRYPOINT ["sh","-c","java $JAVA_OPTS -jar /app/app.jar"]
     
