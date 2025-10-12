@@ -1,4 +1,4 @@
-# ---------- build ----------
+# ---------- build stage ----------
 FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /workspace
 
@@ -9,17 +9,16 @@ COPY services/product-service/pom.xml services/product-service/pom.xml
 COPY services/planning-service/pom.xml services/planning-service/pom.xml
 COPY services/execution-service/pom.xml services/execution-service/pom.xml
 
-RUN mvn -q -DskipTests -pl services/config-server -am dependency:go-offline
+RUN mvn -q -DskipTests -pl services/execution-service -am dependency:go-offline
 
 COPY . .
-RUN mvn -q -DskipTests -pl services/config-server -am package
-
-# ---------- runtime ----------
+RUN mvn -q -DskipTests -pl services/execution-service -am package
+    
+# ---------- runtime stage ----------
 FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
 
-COPY --from=build /workspace/services/config-server/target/config_server-0.0.1-SNAPSHOT.jar app.jar
-
-EXPOSE 8071 
+COPY --from=build /workspace/services/execution-service/target/execution_service-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8083
 ENTRYPOINT ["java","-jar","/app/app.jar"]
     
