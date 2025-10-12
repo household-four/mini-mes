@@ -52,6 +52,10 @@ services:
       SPRING_JPA_DEFER_DATASOURCE_INITIALIZATION: "true"
       SPRING_SQL_INIT_MODE: always
       SPRING_CLOUD_CONFIG_ENABLED: "false"
+      SERVER_PORT: 8081
+      CONFIGSERVER_URI: "http://configserver:8071"
+      CONFIGSERVER_PORT:   "8071"
+      DATABASESERVER_PORT: "5432"
     ports:
       - "8081:8081"
     networks:

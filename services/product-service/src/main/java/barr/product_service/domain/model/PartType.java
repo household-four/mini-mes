@@ -4,5 +4,7 @@ public enum PartType {
     RAW_MATERIAL,
     FASTENER,
     ADHESIVE,
-    ASSEMBLY
+    ASSEMBLY,
+    PURCHASED_PART,
+    MANFACTURED_PART
 }

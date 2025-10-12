@@ -7,5 +7,7 @@ public enum WorkStationType {
     GLUEUP,
     RIVETER,
     BANDSAW,
+    PRESS,
     MANUAL_ASSEMBLY
 }
+// not used: WELDER, GLUEUP, RIVETER, PRESS

@@ -3,6 +3,8 @@ package barr.product_service.domain.model;
 import lombok.*;
 import org.springframework.hateoas.RepresentationModel;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.UUID;
@@ -15,6 +17,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @IdClass(BomItem.BomItemId.class)
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class BomItem extends RepresentationModel<BomItem> {
 
     @Id
