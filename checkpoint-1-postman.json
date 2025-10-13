@@ -1,0 +1,131 @@
+{
+	"info": {
+		"_postman_id": "984b185c-3106-43cd-a5af-8cc16babcbe3",
+		"name": "Mini MES",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41971412"
+	},
+	"item": [
+		{
+			"name": "product-service GET all parts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/parts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"parts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product-service GET part",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "planning-service GET open orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/api/work-orders/open",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"work-orders",
+						"open"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "planning-service GET work order by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/api/work-orders/00000000-0000-0000-0000-000000000402",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"work-orders",
+						"00000000-0000-0000-0000-000000000402"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "execution-service GET completions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/execution/completions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"execution",
+						"completions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "execution-service POST close work order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"workOrderId\": \"00000000-0000-0000-0000-000000000402\",\r\n    \"workerId\": \"88888888-8888-8888-8888-888888888881\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/execution/complete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"execution",
+						"complete"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

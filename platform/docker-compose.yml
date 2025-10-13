@@ -21,7 +21,7 @@ services:
   config-server:
     build: 
       context: ..
-      dockerfile: services/config-server/Dockerfile        # your config-server Dockerfile
+      dockerfile: services/config-server/Dockerfile
     container_name: config-server
     ports:
       - "8071:8071"
