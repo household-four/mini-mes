@@ -75,7 +75,7 @@ public class ProductController {
             return ResponseEntity.notFound().build();
         }
 
-        Optional<Operation> operation = operationRepository.findById(id);
+        Optional<Operation> operation = operationRepository.findByPartId(id);
         return ResponseEntity.ok(operation);
     }
 }

@@ -1,4 +1,7 @@
 
+DROP TABLE IF EXISTS completions CASCADE;
+DROP TABLE IF EXISTS workers CASCADE;
+DROP TABLE IF EXISTS workstation CASCADE;
 DROP TABLE IF EXISTS work_orders CASCADE;
 DROP TABLE IF EXISTS bom_items CASCADE;
 DROP TABLE IF EXISTS operations CASCADE;
@@ -52,3 +55,39 @@ CREATE TABLE work_orders (
 CREATE INDEX idx_wo_part ON work_orders(part_id);
 CREATE INDEX idx_wo_parent ON work_orders(parent_wo_id);
 CREATE INDEX idx_wo_status ON work_orders(status);
+
+CREATE TABLE workstation (
+    station_id UUID PRIMARY KEY,
+    name VARCHAR(128) NOT NULL,
+    type VARCHAR(64) NOT NULL
+);
+
+CREATE TABLE workers (
+    worker_id UUID PRIMARY KEY,
+    name VARCHAR(128) NOT NULL,
+    station_id UUID NOT NULL,
+    CONSTRAINT fk_workers_station
+        FOREIGN KEY (station_id) REFERENCES workstation(station_id)
+        ON DELETE RESTRICT
+);
+
+CREATE INDEX idx_workers_station ON workers(station_id);
+
+CREATE TABLE completions (
+    completion_id UUID PRIMARY KEY,
+    wo_id UUID NOT NULL,
+    worker_id UUID NOT NULL,
+    station_id UUID NOT NULL,
+    completion_time TIMESTAMP NOT NULL,
+    CONSTRAINT fk_completions_wo
+        FOREIGN KEY (wo_id) REFERENCES work_orders(wo_id)
+        ON DELETE CASCADE,
+    CONSTRAINT fk_completions_worker
+        FOREIGN KEY (worker_id) REFERENCES workers(worker_id)
+        ON DELETE RESTRICT,
+    CONSTRAINT fk_completions_station
+        FOREIGN KEY (station_id) REFERENCES workstation(station_id)
+        ON DELETE RESTRICT
+);
+
+CREATE INDEX ix_completions_wo ON completions(wo_id);

@@ -34,6 +34,10 @@ public class PlanningService {
         return workOrderRepository.findByStatus(WorkOrderStatus.OPEN);
     }
 
+    public Optional<WorkOrder> getWorkOrderById(UUID woId) {
+        return workOrderRepository.findById(woId);
+    }
+
     // public Optional<WorkOrder> claimOrder(UUID woId) {
     // return workOrderRepository.findById(woId).map(wo -> {
     // wo.setStatus(WorkOrderStatus.IN_PROGRESS);

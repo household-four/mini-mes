@@ -28,6 +28,11 @@ public class PlanningController {
         return ResponseEntity.ok(planningService.getOpenOrders());
     }
 
+    @GetMapping("/work-orders/{woId}")
+    public ResponseEntity<Optional<WorkOrder>> getWorkOrderById(@PathVariable("woId") UUID woId) {
+        return ResponseEntity.ok(planningService.getWorkOrderById(woId));
+    }
+
     // @PostMapping("/work-orders/{woId}/claim")
     // public ResponseEntity<Optional<WorkOrder>> claimWorkOrder(@PathVariable UUID
     // woId) {
