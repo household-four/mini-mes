@@ -26,16 +26,16 @@ From the `platform` directory:
 docker compose up -d --build
 ```
 
-Service URLs:
+## Testing
+Use the included `checkpoint-1-postman.json` to test the available endpoints.
+
+### Service URLs:
 
 | Service| URL |
 | ----- | ----- |
 | Product Service | `http://localhost:8081` |
 | Planning Service | `http://localhost:8082` |
 | Execution Service | `http://localhost:8083` |
-
-## Testing
-Use the included `checkpoint-1-postman.json` to test the available endpoints.
 
 ## Assumptions 
 The following simplifying assumptions were made for this project. These could be expanded in future iterations to make the system more realistic and representative of a real manufacturing environment.
