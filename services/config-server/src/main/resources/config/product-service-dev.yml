@@ -3,6 +3,19 @@ server:
 
 app:
   greeting: "Product service: Hello from Config Server (dev)"
+  flavor: "DEV via Config Server"
 logging:
   level:
     root: INFO
+spring:
+  datasource:
+    url: jdbc:postgresql://database:5432/ostock_dev
+    username: postgres
+    password: postgres
+  jpa: 
+    hibernate:
+      ddl-auto: update
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always

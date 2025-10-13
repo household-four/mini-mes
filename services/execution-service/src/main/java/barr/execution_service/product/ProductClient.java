@@ -13,7 +13,6 @@ import java.util.UUID;
 public class ProductClient {
     private final RestClient productRestClient;
 
-    // Expose this in Product: GET /api/v1/operations/by-part/{partId}
     public OperationDTO getOperationByPart(UUID partId) {
         return productRestClient.get()
                 .uri("/api/parts/{partId}/operation", partId)

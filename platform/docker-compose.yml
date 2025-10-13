@@ -27,6 +27,8 @@ services:
       - "8071:8071"
     environment:
       SERVER_PORT: 8071
+      SPRING_PROFILES_ACTIVE: native
+      SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCH_LOCATIONS: classpath:/config
     healthcheck:
       test: ["CMD", "wget", "-q", "-O", "-", "http://localhost:8071/actuator/health"]
       interval: 10s
@@ -49,16 +51,9 @@ services:
       config-server:
         condition: service_healthy
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/ostock_dev
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: postgres
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
-      SPRING_JPA_DEFER_DATASOURCE_INITIALIZATION: "true"
-      SPRING_SQL_INIT_MODE: always
-      SPRING_CLOUD_CONFIG_ENABLED: "false"
-      SERVER_PORT: 8081
-      CONFIGSERVER_URI: "http://configserver:8071"
-      CONFIGSERVER_PORT:   "8071"
+      SPRING_APPLICATION_NAME: product-service
+      SPRING_CONFIG_IMPORT: optional:configserver:http://config-server:8071
+      SPRING_PROFILES_ACTIVE: dev
       DATABASESERVER_PORT: "5432"
     ports:
       - "8081:8081"
@@ -76,16 +71,9 @@ services:
       config-server:
         condition: service_healthy
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/ostock_dev
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: postgres
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
-      SPRING_JPA_DEFER_DATASOURCE_INITIALIZATION: "true"
-      SPRING_SQL_INIT_MODE: always
-      SPRING_CLOUD_CONFIG_ENABLED: "false"
-      SERVER_PORT: 8082
-      CONFIGSERVER_URI: "http://configserver:8071"
-      CONFIGSERVER_PORT:   "8071"
+      SPRING_APPLICATION_NAME: planning-service
+      SPRING_CONFIG_IMPORT: optional:configserver:http://config-server:8071
+      SPRING_PROFILES_ACTIVE: dev
       DATABASESERVER_PORT: "5432"
     ports:
       - "8082:8082"
@@ -103,16 +91,9 @@ services:
       config-server:
         condition: service_healthy
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/ostock_dev
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: postgres
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
-      SPRING_JPA_DEFER_DATASOURCE_INITIALIZATION: "true"
-      SPRING_SQL_INIT_MODE: always
-      SPRING_CLOUD_CONFIG_ENABLED: "false"
-      SERVER_PORT: 8083
-      CONFIGSERVER_URI: "http://configserver:8071"
-      CONFIGSERVER_PORT:   "8071"
+      SPRING_APPLICATION_NAME: execution-service
+      SPRING_CONFIG_IMPORT: optional:configserver:http://config-server:8071
+      SPRING_PROFILES_ACTIVE: dev
       DATABASESERVER_PORT: "5432"
     ports:
       - "8083:8083"
