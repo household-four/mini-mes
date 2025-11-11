@@ -14,6 +14,9 @@ Each service owns its own data and exposes REST APIs for communication.
 | **Planning Service** | Manages the queue of work orders and generates sub-orders for assemblies. |
 | **Execution Service** | Allows workers to complete work orders at workstations, creating completion records. |
 
+### Authentication
+Keycloak is used on port `9080`. The realm export is located at `platform\realm-export.json`.
+
 ## Prerequisites
 - Java 17
 - Docker desktop installed 
