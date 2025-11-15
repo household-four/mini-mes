@@ -10,16 +10,15 @@ COPY services/planning-service/pom.xml services/planning-service/pom.xml
 COPY services/execution-service/pom.xml services/execution-service/pom.xml
 COPY services/gatewayserver/pom.xml services/gatewayserver/pom.xml
 
-RUN mvn -q -DskipTests -pl services/product-service -am dependency:go-offline
+RUN mvn -q -DskipTests -pl services/gatewayserver -am dependency:go-offline
 
 COPY . .
-RUN mvn -q -DskipTests -pl services/product-service -am package
+RUN mvn -q -DskipTests -pl services/gatewayserver -am package
     
 # ---------- runtime stage ----------
 FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
 
-COPY --from=build /workspace/services/product-service/target/product_service-0.0.1-SNAPSHOT.jar app.jar
-EXPOSE 8081
+COPY --from=build /workspace/services/gatewayserver/target/gateway_server-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8072
 ENTRYPOINT ["java","-jar","/app/app.jar"]
-    

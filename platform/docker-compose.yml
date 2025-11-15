@@ -21,7 +21,9 @@ services:
   config-server:
     build: 
       context: ..
-      dockerfile: services/config-server/Dockerfile
+      dockerfile: ./Dockerfile
+      args:
+        SERVICE_PATH: services/config-server
     container_name: config-server
     ports:
       - "8071:8071"
@@ -41,18 +43,23 @@ services:
           - "configserver"
 
   product-service:
+    image: mini-mes/product
     build:
       context: ..
-      dockerfile: services/product-service/Dockerfile
+      dockerfile: ./Dockerfile
+      args:
+        SERVICE_PATH: services/product-service
     container_name: product-service
     depends_on:
       database:
         condition: service_healthy
       config-server:
         condition: service_healthy
+      eureka:
+        condition: service_healthy
+      keycloak:
+        condition: service_started   
     environment:
-      SPRING_APPLICATION_NAME: product-service
-      SPRING_CONFIG_IMPORT: optional:configserver:http://config-server:8071
       SPRING_PROFILES_ACTIVE: dev
       DATABASESERVER_PORT: "5432"
     ports:
@@ -61,40 +68,48 @@ services:
       - backend
 
   planning-service:
+    image: mini-mes/planning
     build:
       context: ..
-      dockerfile: services/planning-service/Dockerfile
-    container_name: planning-service
+      dockerfile: ./Dockerfile
+      args:
+        SERVICE_PATH: services/planning-service
     depends_on:
       database:
         condition: service_healthy
       config-server:
         condition: service_healthy
+      eureka:
+        condition: service_healthy
+      keycloak:
+        condition: service_started   
     environment:
-      SPRING_APPLICATION_NAME: planning-service
-      SPRING_CONFIG_IMPORT: optional:configserver:http://config-server:8071
-      SPRING_PROFILES_ACTIVE: dev
       DATABASESERVER_PORT: "5432"
+      SPRING_PROFILES_ACTIVE: dev
     ports:
       - "8082:8082"
     networks:
       - backend
 
   execution-service:
+    image: mini-mes/execution
     build:
       context: ..
-      dockerfile: services/execution-service/Dockerfile
-    container_name: execution-service
+      dockerfile: ./Dockerfile
+      args:
+        SERVICE_PATH: services/execution-service
     depends_on:
       database:
         condition: service_healthy
       config-server:
         condition: service_healthy
+      eureka:
+        condition: service_healthy
+      keycloak:
+        condition: service_started   
     environment:
-      SPRING_APPLICATION_NAME: execution-service
-      SPRING_CONFIG_IMPORT: optional:configserver:http://config-server:8071
-      SPRING_PROFILES_ACTIVE: dev
       DATABASESERVER_PORT: "5432"
+      SPRING_PROFILES_ACTIVE: dev
     ports:
       - "8083:8083"
     networks:
@@ -109,6 +124,68 @@ services:
       ports:
         - "9080:9080"
       restart: unless-stopped
+      healthcheck:
+        test: ["CMD", "curl", "-fsS", "http://localhost:9080/"]
+        interval: 10s
+        timeout: 3s
+        retries: 15
+      networks: 
+        - backend
+  
+  gateway:
+    image: mini-mes/gateway
+    build: 
+      context: ..
+      dockerfile: ./Dockerfile
+      args:
+        SERVICE_PATH: services/gatewayserver
+    environment:
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: "http://keycloak:9080/realms/mini-mes"
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI: "http://keycloak:9080/realms/mini-mes/protocol/openid-connect/certs"
+    ports:
+      - "8072:8072"
+    depends_on:
+        database:
+          condition: service_healthy
+        config-server:
+          condition: service_started
+        eureka:
+          condition: service_started
+        keycloak:
+          condition: service_started      
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "-", "http://localhost:8072/actuator/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 20s
+    networks:
+      - "backend"
+  eureka:
+    image: mini-mes/eureka
+    build:
+      context: ..
+      dockerfile: ./Dockerfile
+      args:
+        SERVICE_PATH: services/eurekaserver
+    environment:
+      EUREKA_CLIENT_REGISTER_WITH_EUREKA: "false"
+      EUREKA_CLIENT_FETCH_REGISTRY: "false"
+    ports:
+      - "8070:8070"
+    depends_on:
+      database:
+        condition: service_healthy
+      config-server:
+        condition: service_started 
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8070/"]
+      interval: 10s
+      timeout: 2s
+      retries: 20 
+    networks:
+      - backend
+
 networks:
   backend: 
 

@@ -8,6 +8,7 @@ COPY services/config-server/pom.xml services/config-server/pom.xml
 COPY services/product-service/pom.xml services/product-service/pom.xml
 COPY services/planning-service/pom.xml services/planning-service/pom.xml
 COPY services/execution-service/pom.xml services/execution-service/pom.xml
+COPY services/gatewayserver/pom.xml services/gatewayserver/pom.xml
 
 RUN mvn -q -DskipTests -pl services/config-server -am dependency:go-offline
 

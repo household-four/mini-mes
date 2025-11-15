@@ -6,7 +6,7 @@ app:
   flavor: "DEV via Config Server"
 logging:
   level:
-    root: INFO
+    root: WARN
 spring:
   datasource:
     url: jdbc:postgresql://database:5432/ostock_dev
@@ -19,3 +19,17 @@ spring:
   sql:
     init:
       mode: always
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "http://keycloak:9080/realms/mini-mes"
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka:8070/eureka/

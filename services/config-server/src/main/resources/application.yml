@@ -1,12 +1,10 @@
 spring:
   application:
     name: config-server
-  cloud:
-    config:
-      server:
-        native:
-          search-locations: classpath:/config
-    
+
+logging:
+  level:
+    root: WARN
 server:
   port: 8071
 
@@ -18,3 +16,7 @@ management:
   health: 
     configserver:
       enabled: false
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
