@@ -25,7 +25,7 @@ Keycloak is used for authentication on port `9080`. The realm export is located 
  
 From the `platform` directory: 
 
-```sh
+```pwsh
 docker compose up -d --build
 ```
 
