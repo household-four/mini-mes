@@ -1,0 +1,542 @@
+{
+	"info": {
+		"_postman_id": "85445325-5ae6-45c1-8ab2-8c06175b54e4",
+		"name": "Mini MES: Checkpoint 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41971412"
+	},
+	"item": [
+		{
+			"name": "ADMIN access token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "HsxBiXppOWhZ9P76mIRoHgdYWz9GfY18",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "mini-mes-gateway",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://keycloak:9080/realms/mini-mes/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"keycloak"
+					],
+					"port": "9080",
+					"path": [
+						"realms",
+						"mini-mes",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ENGINEER access token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "HsxBiXppOWhZ9P76mIRoHgdYWz9GfY18",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "mini-mes-gateway",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "engineer",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "engineer",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://keycloak:9080/realms/mini-mes/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"keycloak"
+					],
+					"port": "9080",
+					"path": [
+						"realms",
+						"mini-mes",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MECHANIC access token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "HsxBiXppOWhZ9P76mIRoHgdYWz9GfY18",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "mini-mes-gateway",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "mechanic",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "mechanic",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://keycloak:9080/realms/mini-mes/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"keycloak"
+					],
+					"port": "9080",
+					"path": [
+						"realms",
+						"mini-mes",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PLANNER access token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "HsxBiXppOWhZ9P76mIRoHgdYWz9GfY18",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "mini-mes-gateway",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "planner",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "planner",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://keycloak:9080/realms/mini-mes/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"keycloak"
+					],
+					"port": "9080",
+					"path": [
+						"realms",
+						"mini-mes",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MECHANIC delete parts (403)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIzT0lraXRSc2pURHhGWHJ0VnF1Rl9HcWViaUdnNWR3SEtCOEw4VThOVWVVIn0.eyJleHAiOjE3NjMyNDk3NjcsImlhdCI6MTc2MzI0OTQ2NywianRpIjoib25ydHJvOmJmZTlkMzgzLWMyN2UtNjI1NC1iZmIzLWRjMjlmYTk2OWQ4NiIsImlzcyI6Imh0dHA6Ly9rZXljbG9hazo5MDgwL3JlYWxtcy9taW5pLW1lcyIsInN1YiI6ImQxZGQxNjAxLWRlYzUtNDE1OC1iMzIzLTE0MTg2YThlZDFlNyIsInR5cCI6IkJlYXJlciIsImF6cCI6Im1pbmktbWVzLWdhdGV3YXkiLCJzaWQiOiJhMGVlOWRjOC1mNjIwLTczMzUtOGMxYS00MzA3NjFmODU2OWEiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm1lcy1tZWNoYW5pYyJdfSwicmVzb3VyY2VfYWNjZXNzIjp7Im1pbmktbWVzLWdhdGV3YXkiOnsicm9sZXMiOlsiTUVDSEFOSUMiLCJVU0VSIl19fSwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInByZWZlcnJlZF91c2VybmFtZSI6Im1lY2hhbmljIiwiZ2l2ZW5fbmFtZSI6IiIsImZhbWlseV9uYW1lIjoiIn0.igA729Js9tcn57ToDYRCfMkIesXTlea-6XRaq0JXBAYLr1TkxOPA-YXm9YhJnZslRGdeAiCDZGtRo1sE7zXS_7drzPeP7yjIoPkmTyOwaL4Y712CAe4lvpoBsxhDy6KqGsG9vsEhJ-mZiw9o_4ZiwW3pZpLpGJmKqqFYTw_ooIXlJXMMU3LgzlC2OY-Hhp9fCslqUr3FXhZSEgM6qGdfLNrh-DJsYj1lDJ2-jlCCi7UWNHtYMQYeHus6tbyJwsuIQs_e6gaQ9k3rBIPsqRgQAlSqB9I1M7IJntiUheLpY08dMj8i2J44es1nSlcfUispnbBCVh5HTKByreXWP2mmbw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8072/api/product-service/api/parts/11111111-1111-1111-1111-111111111111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8072",
+					"path": [
+						"api",
+						"product-service",
+						"api",
+						"parts",
+						"11111111-1111-1111-1111-111111111111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ENGINEER delete part (200)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIzT0lraXRSc2pURHhGWHJ0VnF1Rl9HcWViaUdnNWR3SEtCOEw4VThOVWVVIn0.eyJleHAiOjE3NjMyNDk2NTksImlhdCI6MTc2MzI0OTM1OSwianRpIjoib25ydHJvOjdlMWUyNWIyLTU1ODctMmUzOS1jMjMwLThlMTQ2NjY4MGJiOCIsImlzcyI6Imh0dHA6Ly9rZXljbG9hazo5MDgwL3JlYWxtcy9taW5pLW1lcyIsInN1YiI6IjUzMGRhOWM5LWI5MzctNDAzNi05YzRhLTgyYjZhNmJjMDBlMyIsInR5cCI6IkJlYXJlciIsImF6cCI6Im1pbmktbWVzLWdhdGV3YXkiLCJzaWQiOiI5Y2Y3MDBlZi1lZDE4LThlYmUtMDhhMC02MmJiMmRhYzA0OTUiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm1lcy1lbmdpbmVlciJdfSwicmVzb3VyY2VfYWNjZXNzIjp7Im1pbmktbWVzLWdhdGV3YXkiOnsicm9sZXMiOlsiRU5HSU5FRVIiLCJVU0VSIl19fSwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInByZWZlcnJlZF91c2VybmFtZSI6ImVuZ2luZWVyIiwiZ2l2ZW5fbmFtZSI6IiIsImZhbWlseV9uYW1lIjoiIn0.m6a2IoFPv_DDUHivgwhVAn7yxWxBWV7dd2lgxtmZvlegPwW8eMUdRnWzVxJrn8aXJkAcguGyBTxDL3ZrdLBd4oA3ftC5Syl2nSBd4fPc5yREfNQWSJSRnUFJ6PFp_0i7K9sSiA-KqJ-uTYn_449sZ4Z7iU50MtZpG1VOLV5esavMpGkaMyOrL2sMCuetXCXhDF-vYzcRIip4bsO-rlFfAF2q5ZgKjngGASxJR-O62PPjFrAROyVgvU7fOVoBLyDGCNsEXqP5BosUEjpfAUVPIEklWkRN63bj39nhXwxvkjbEZyw1whw8I6sUAM_vcjdruov-CaUbyfcvBKLwDkErpQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8072/api/product-service/api/parts/11111111-1111-1111-1111-111111111111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8072",
+					"path": [
+						"api",
+						"product-service",
+						"api",
+						"parts",
+						"11111111-1111-1111-1111-111111111111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADMIN delete part (200)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIzT0lraXRSc2pURHhGWHJ0VnF1Rl9HcWViaUdnNWR3SEtCOEw4VThOVWVVIn0.eyJleHAiOjE3NjMyNTI5NTAsImlhdCI6MTc2MzI1MjY1MCwianRpIjoib25ydHJvOjljMWU3MzQ1LWIwMWUtYWYxOS00MDM4LTlhOGFhMGRmOGQ4NCIsImlzcyI6Imh0dHA6Ly9rZXljbG9hazo5MDgwL3JlYWxtcy9taW5pLW1lcyIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYnJva2VyIiwiYWNjb3VudCJdLCJzdWIiOiJlNTU3YzU0Yy1lYTQ0LTQ2NmItYjFjYS1lYzRiYWI4NTVhODUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJtaW5pLW1lcy1nYXRld2F5Iiwic2lkIjoiMTdkMjI0MzQtNjk5Zi04OTU4LWQxMmQtNTc5MGUyYTFhZmJiIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJtZXMtYWRtaW4iXX0sInJlc291cmNlX2FjY2VzcyI6eyJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbInZpZXctaWRlbnRpdHktcHJvdmlkZXJzIiwidmlldy1yZWFsbSIsIm1hbmFnZS1pZGVudGl0eS1wcm92aWRlcnMiLCJpbXBlcnNvbmF0aW9uIiwicmVhbG0tYWRtaW4iLCJjcmVhdGUtY2xpZW50IiwibWFuYWdlLXVzZXJzIiwicXVlcnktcmVhbG1zIiwidmlldy1hdXRob3JpemF0aW9uIiwicXVlcnktY2xpZW50cyIsInF1ZXJ5LXVzZXJzIiwibWFuYWdlLWV2ZW50cyIsIm1hbmFnZS1yZWFsbSIsInZpZXctZXZlbnRzIiwidmlldy11c2VycyIsInZpZXctY2xpZW50cyIsIm1hbmFnZS1hdXRob3JpemF0aW9uIiwibWFuYWdlLWNsaWVudHMiLCJxdWVyeS1ncm91cHMiXX0sIm1pbmktbWVzLWdhdGV3YXkiOnsicm9sZXMiOlsiTUVDSEFOSUMiLCJFTkdJTkVFUiIsInVtYV9wcm90ZWN0aW9uIiwiUExBTk5FUiIsIkFETUlOIiwiVVNFUiJdfSwiYnJva2VyIjp7InJvbGVzIjpbInJlYWQtdG9rZW4iXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJ2aWV3LWFwcGxpY2F0aW9ucyIsInZpZXctY29uc2VudCIsInZpZXctZ3JvdXBzIiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJkZWxldGUtYWNjb3VudCIsIm1hbmFnZS1jb25zZW50Iiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInByZWZlcnJlZF91c2VybmFtZSI6ImFkbWluIiwiZ2l2ZW5fbmFtZSI6IiIsImZhbWlseV9uYW1lIjoiIiwiZW1haWwiOiJiYXJyaW5nZXJjaHJpc3RlbjRAZ21haWwuY29tIn0.qKUzIws_l2BXda18z55dNk-isvTc2b1ND96OjywyHUpfnePgsL5MuFkN3-yByKOcElVqQXyM-ZykFSDohUhs5WaWvPaHrXoec-V1Ycr8IiZqC8A_Rd5foUXaN5kFZP5ZPYvAyibcE_jfeUXhAjWhMyDhxyrYhmNwO6udvf9qcbjBZ8voXKlOi_Dq7N7px7QXhSIvekPkNp0E3abpj-IyY4pV7arzunzhCA6WPSo63bgWBaQSbeMw6xpviR1uAVtUD1dRzR6v5zgZsziT_JhaY8cjKH9pPTNzACx1Y8qCiqoQwQ59FN0prreclBJvGuUa4KoQnxX9zcbkrzD6hxHtVw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8072/api/product-service/api/parts/22222222-2222-2222-2222-222222222222",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8072",
+					"path": [
+						"api",
+						"product-service",
+						"api",
+						"parts",
+						"22222222-2222-2222-2222-222222222222"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ENGINEER get part (200) Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIzT0lraXRSc2pURHhGWHJ0VnF1Rl9HcWViaUdnNWR3SEtCOEw4VThOVWVVIn0.eyJleHAiOjE3NjMyNDk2NTksImlhdCI6MTc2MzI0OTM1OSwianRpIjoib25ydHJvOjdlMWUyNWIyLTU1ODctMmUzOS1jMjMwLThlMTQ2NjY4MGJiOCIsImlzcyI6Imh0dHA6Ly9rZXljbG9hazo5MDgwL3JlYWxtcy9taW5pLW1lcyIsInN1YiI6IjUzMGRhOWM5LWI5MzctNDAzNi05YzRhLTgyYjZhNmJjMDBlMyIsInR5cCI6IkJlYXJlciIsImF6cCI6Im1pbmktbWVzLWdhdGV3YXkiLCJzaWQiOiI5Y2Y3MDBlZi1lZDE4LThlYmUtMDhhMC02MmJiMmRhYzA0OTUiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm1lcy1lbmdpbmVlciJdfSwicmVzb3VyY2VfYWNjZXNzIjp7Im1pbmktbWVzLWdhdGV3YXkiOnsicm9sZXMiOlsiRU5HSU5FRVIiLCJVU0VSIl19fSwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInByZWZlcnJlZF91c2VybmFtZSI6ImVuZ2luZWVyIiwiZ2l2ZW5fbmFtZSI6IiIsImZhbWlseV9uYW1lIjoiIn0.m6a2IoFPv_DDUHivgwhVAn7yxWxBWV7dd2lgxtmZvlegPwW8eMUdRnWzVxJrn8aXJkAcguGyBTxDL3ZrdLBd4oA3ftC5Syl2nSBd4fPc5yREfNQWSJSRnUFJ6PFp_0i7K9sSiA-KqJ-uTYn_449sZ4Z7iU50MtZpG1VOLV5esavMpGkaMyOrL2sMCuetXCXhDF-vYzcRIip4bsO-rlFfAF2q5ZgKjngGASxJR-O62PPjFrAROyVgvU7fOVoBLyDGCNsEXqP5BosUEjpfAUVPIEklWkRN63bj39nhXwxvkjbEZyw1whw8I6sUAM_vcjdruov-CaUbyfcvBKLwDkErpQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8072/api/product-service/api/parts/11111111-1111-1111-1111-111111111111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8072",
+					"path": [
+						"api",
+						"product-service",
+						"api",
+						"parts",
+						"11111111-1111-1111-1111-111111111111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Realm Config",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9080/realms/mini-mes/.well-known/openid-configuration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9080",
+					"path": [
+						"realms",
+						"mini-mes",
+						".well-known",
+						"openid-configuration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product-service GET all parts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8072/api/product-service/api/parts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8072",
+					"path": [
+						"api",
+						"product-service",
+						"api",
+						"parts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product-service GET part",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8072/api/product-service/api/parts/11111111-1111-1111-1111-111111111111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8072",
+					"path": [
+						"api",
+						"product-service",
+						"api",
+						"parts",
+						"11111111-1111-1111-1111-111111111111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "planning-service GET open orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8072/api/planning-service/api/work-orders/open",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8072",
+					"path": [
+						"api",
+						"planning-service",
+						"api",
+						"work-orders",
+						"open"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "planning-service GET work order by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8072/api/planning-service/api/work-orders/00000000-0000-0000-0000-000000000402",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8072",
+					"path": [
+						"api",
+						"planning-service",
+						"api",
+						"work-orders",
+						"00000000-0000-0000-0000-000000000402"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "execution-service GET completions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8072/api/execution-service/api/execution/completions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8072",
+					"path": [
+						"api",
+						"execution-service",
+						"api",
+						"execution",
+						"completions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "execution-service POST close work order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"workOrderId\": \"00000000-0000-0000-0000-000000000402\",\r\n    \"workerId\": \"88888888-8888-8888-8888-888888888881\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8072/api/execution-service/api/execution/complete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8072",
+					"path": [
+						"api",
+						"execution-service",
+						"api",
+						"execution",
+						"complete"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
