@@ -44,7 +44,7 @@ Use the included `checkpoint-1-postman.json` to test the available endpoints.
 
 A gateway server runs on port `8072`, allowing you to access each service from `http://localhost:8072`. For example:
 
-```sh
+```http
 GET http://localhost:8072/api/product-service/api/parts/11111111-1111-1111-1111-111111111111
 ```
 
