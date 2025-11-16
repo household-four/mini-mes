@@ -29,8 +29,10 @@ From the `platform` directory:
 docker compose up -d --build
 ```
 
+Navigate to `localhost:9080` and import the realm export described [above](#authentication).
+
 ## Testing
-Use the included `checkpoint-1-postman.json` to test the available endpoints.
+Use the included `checkpoint-1-postman.json` to test the available endpoints. 
 
 ### Service URLs:
 

@@ -25,11 +25,11 @@ spring:
           predicates:
             - name: Path
               args:
-                pattern: "'/api/'+serviceId+'/**'"
+                pattern: "'/'+serviceId+'/**'"
           filters:
             - name: StripPrefix
               args:
-                parts: 2
+                parts: 1
       default-filters:
         - RemoveRequestHeader=Cookie,Set-Cookie
 management:

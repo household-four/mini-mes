@@ -600,6 +600,74 @@
       },
       "notBefore": 0,
       "groups": []
+    },
+    {
+      "username": "admin",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "admin"
+        }
+      ],
+      "realmRoles": [
+        "mes-admin"
+      ]
+    },
+    {
+      "username": "engineer",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "engineer"
+        }
+      ],
+      "realmRoles": [
+        "mes-engineer"
+      ]
+    },
+    {
+      "username": "mechanic",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "mechanic"
+        }
+      ],
+      "realmRoles": [
+        "mes-mechanic"
+      ]
+    },
+    {
+      "username": "planner",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "planner"
+        }
+      ],
+      "realmRoles": [
+        "mes-planner"
+      ]
     }
   ],
   "scopeMappings": [
@@ -824,7 +892,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "**********",
+      "secret": "HsxBiXppOWhZ9P76mIRoHgdYWz9GfY18",
       "redirectUris": [
         "http://localhost:80*"
       ],
@@ -872,47 +940,7 @@
         "organization",
         "offline_access",
         "microprofile-jwt"
-      ],
-      "authorizationSettings": {
-        "allowRemoteResourceManagement": true,
-        "policyEnforcementMode": "ENFORCING",
-        "resources": [
-          {
-            "name": "Default Resource",
-            "type": "urn:mini-mes-gateway:resources:default",
-            "ownerManagedAccess": false,
-            "attributes": {},
-            "uris": [
-              "/*"
-            ]
-          }
-        ],
-        "policies": [
-          {
-            "name": "Default Policy",
-            "description": "A policy that grants access only for users within this realm",
-            "type": "js",
-            "logic": "POSITIVE",
-            "decisionStrategy": "AFFIRMATIVE",
-            "config": {
-              "code": "// by default, grants any permission associated with this policy\n$evaluation.grant();\n"
-            }
-          },
-          {
-            "name": "Default Permission",
-            "description": "A permission that applies to the default resource type",
-            "type": "resource",
-            "logic": "POSITIVE",
-            "decisionStrategy": "UNANIMOUS",
-            "config": {
-              "defaultResourceType": "urn:mini-mes-gateway:resources:default",
-              "applyPolicies": "[\"Default Policy\"]"
-            }
-          }
-        ],
-        "scopes": [],
-        "decisionStrategy": "UNANIMOUS"
-      }
+      ]
     },
     {
       "id": "04a58c1a-38ff-406d-82db-d3cdb8c16b51",
