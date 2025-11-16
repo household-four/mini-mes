@@ -15,7 +15,7 @@ Each service owns its own data and exposes REST APIs for communication.
 | **Execution Service** | Allows workers to complete work orders at workstations, creating completion records. |
 
 ### Authentication
-Keycloak is used on port `9080`. The realm export is located at `platform\realm-export.json`.
+Keycloak is used for authentication on port `9080`. The realm export is located at `platform/realm-export.json`.
 
 ## Prerequisites
 - Java 17
@@ -42,6 +42,12 @@ Use the included `checkpoint-1-postman.json` to test the available endpoints.
 | Planning Service | `http://localhost:8082` |
 | Execution Service | `http://localhost:8083` |
 
+A gateway server runs on port `8072`, allowing you to access each service from `http://localhost:8072`. For example:
+
+```sh
+GET http://localhost:8072/api/product-service/api/parts/11111111-1111-1111-1111-111111111111
+```
+
 ## Assumptions 
 The following simplifying assumptions were made for this project. These could be expanded in future iterations to make the system more realistic and representative of a real manufacturing environment.
 
@@ -51,7 +57,7 @@ There is no upstream system that tracks customer demand or automatically generat
 The BOM does not include quantity information. Each parent part requires exactly one of each of its child parts to be built.
 - **Instantaneous work order completion.**  
 Work orders are completed immediately when processed. No simulation of elapsed time, workstation occupancy, or partial progress is modeled.
-- **Simplified work order lifecycle**
+- **Simplified work order lifecycle**  
 Work orders can only exist in two states: `OPEN` and `CLOSED`. Intermediate statuses like `PLANNED`, `RELEASED`, or `IN_PROGRESS` are not implemented.
-- **Infinite purchased inventory.**
+- **Infinite purchased inventory.**  
 Raw materials, fasteners, and purchased parts are assumed to always be on hand and never short. 
