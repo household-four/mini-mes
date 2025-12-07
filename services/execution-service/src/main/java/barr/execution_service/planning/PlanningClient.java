@@ -19,14 +19,14 @@ public class PlanningClient {
 
     public WorkOrderDTO getWorkOrder(UUID woId) {
         return planningRestClient.get()
-                .uri("/api/work-orders/{woId}", woId)
+                .uri("/work-orders/{woId}", woId)
                 .retrieve()
                 .body(WorkOrderDTO.class);
     }
 
     public void closeWorkOrder(UUID woId) {
         planningRestClient.post()
-                .uri("/api/work-orders/{woId}/close", woId)
+                .uri("/work-orders/{woId}/close", woId)
                 .retrieve()
                 .toBodilessEntity();
     }

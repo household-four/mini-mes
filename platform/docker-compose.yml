@@ -56,9 +56,7 @@ services:
       config-server:
         condition: service_healthy
       eureka:
-        condition: service_healthy
-      keycloak:
-        condition: service_started   
+        condition: service_healthy 
     environment:
       SPRING_PROFILES_ACTIVE: dev
       DATABASESERVER_PORT: "5432"
@@ -81,8 +79,6 @@ services:
         condition: service_healthy
       eureka:
         condition: service_healthy
-      keycloak:
-        condition: service_started   
     environment:
       DATABASESERVER_PORT: "5432"
       SPRING_PROFILES_ACTIVE: dev
@@ -105,8 +101,6 @@ services:
         condition: service_healthy
       eureka:
         condition: service_healthy
-      keycloak:
-        condition: service_started   
     environment:
       DATABASESERVER_PORT: "5432"
       SPRING_PROFILES_ACTIVE: dev
@@ -115,22 +109,28 @@ services:
     networks:
       - backend
 
-  keycloak:
-      image: quay.io/keycloak/keycloak:26.4.4
-      command: ["start-dev", "--http-port=9080"]
-      environment:
-        KC_BOOTSTRAP_ADMIN_USERNAME: admin
-        KC_BOOTSTRAP_ADMIN_PASSWORD: admin
-      ports:
-        - "9080:9080"
-      restart: unless-stopped
-      healthcheck:
-        test: ["CMD", "curl", "-fsS", "http://localhost:9080/"]
-        interval: 10s
-        timeout: 3s
-        retries: 15
-      networks: 
-        - backend
+  kafka:
+    image: wurstmeister/kafka:latest
+    ports:
+      - 9092:9092
+    environment:
+      - KAFKA_ADVERTISED_HOST_NAME=kafka
+      - KAFKA_ADVERTISED_PORT=9092
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_CREATE_TOPICS=work-orders:1:1
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    depends_on:
+      - zookeeper
+    networks:
+      - backend
+
+  zookeeper:
+    image: wurstmeister/zookeeper:latest
+    ports:
+      - 2181:2181
+    networks:
+      - backend
   
   gateway:
     image: mini-mes/gateway
@@ -139,9 +139,6 @@ services:
       dockerfile: ./Dockerfile
       args:
         SERVICE_PATH: services/gatewayserver
-    environment:
-      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: "http://keycloak:9080/realms/mini-mes"
-      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI: "http://keycloak:9080/realms/mini-mes/protocol/openid-connect/certs"
     ports:
       - "8072:8072"
     depends_on:
@@ -150,9 +147,7 @@ services:
         config-server:
           condition: service_started
         eureka:
-          condition: service_started
-        keycloak:
-          condition: service_started      
+          condition: service_started   
     healthcheck:
       test: ["CMD", "wget", "-q", "-O", "-", "http://localhost:8072/actuator/health"]
       interval: 10s

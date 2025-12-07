@@ -112,14 +112,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8083/api/execution/complete",
+					"raw": "http://localhost:8083/execution/complete",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8083",
 					"path": [
-						"api",
 						"execution",
 						"complete"
 					]

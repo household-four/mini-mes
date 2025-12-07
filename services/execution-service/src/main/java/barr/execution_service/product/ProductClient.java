@@ -15,7 +15,7 @@ public class ProductClient {
 
     public OperationDTO getOperationByPart(UUID partId) {
         return productRestClient.get()
-                .uri("/api/parts/{partId}/operation", partId)
+                .uri("/parts/{partId}/operation", partId)
                 .retrieve()
                 .body(OperationDTO.class);
     }

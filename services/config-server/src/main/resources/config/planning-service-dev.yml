@@ -6,7 +6,9 @@ app:
   flavor: "DEV via Config Server"
 logging:
   level:
-    root: WARN
+    root: INFO
+    org.springframework.kafka: INFO
+    org.apache.kafka: INFO
 spring:
   datasource:
     url: jdbc:postgresql://database:5432/ostock_dev
@@ -19,11 +21,12 @@ spring:
   sql:
     init:
       mode: always
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: "http://keycloak:9080/realms/mini-mes"
+  kafka:
+    bootstrap-servers: kafka:9092
+    consumer:
+      group-id: planning-service
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 
 eureka:
   instance:
