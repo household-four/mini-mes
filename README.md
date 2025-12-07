@@ -54,7 +54,7 @@ A gateway server runs on port `8072`, allowing you to access each service from `
 request gets routed by the gateway server to the product service on port `8081`.
 
 ```http
-GET http://localhost:8072/api/product-service/parts/11111111-1111-1111-1111-111111111111
+GET http://localhost:8072/product-service/parts/11111111-1111-1111-1111-111111111111
 ```
 
 ## Assumptions 

@@ -10,6 +10,8 @@ eureka:
     serviceUrl:
       defaultZone: http://eureka:8070/eureka/
 logging:
+  pattern:
+    level: "%5p [${spring.application.name},%X{traceId:-},%X{spanId:-}]"
   level:
     root: WARN
 spring:
@@ -32,11 +34,19 @@ spring:
                 parts: 1
       default-filters:
         - RemoveRequestHeader=Cookie,Set-Cookie
+  reactor:
+    context-propagation: AUTO
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans
         
         
         

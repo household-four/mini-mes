@@ -5,6 +5,8 @@ app:
   greeting: "Execution service: Hello from Config Server (dev)"
   flavor: "DEV via Config Server"
 logging:
+  pattern:
+    level: "%5p [${spring.application.name},%X{traceId:-},%X{spanId:-}]"
   level:
     root: INFO
     org.springframework.kafka: INFO
@@ -26,6 +28,14 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+management:
+  tracing:
+    sampling:
+      probability: 1.0 
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans
+
 
 eureka:
   instance:
